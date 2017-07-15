@@ -55,6 +55,21 @@ WiFiServer::WiFiServer(uint16_t port)
 {
 }
 
+WiFiServer::WiFiServer()
+: _port(nullptr)
+, _addr(nullptr)
+, _pcb(nullptr)
+, _unclaimed(nullptr)
+, _discarded(nullptr)
+{
+}
+WiFiServer::WiFiServer(WiFiServer &temp){
+  _port = temp.port;
+  _addr = temp.addr;
+  _pcb = nullptr;
+  _unclaimed = nullptr;
+  _discarded = nullptr;
+}
 void WiFiServer::begin() {
     close();
     err_t err;
